@@ -1,0 +1,29 @@
+{
+  "name": "@blueskyfish/whalerider",
+  "description": "A start template for angular and nestjs mono repository",
+  "version": "0.0.1",
+  "license": "MIT",
+  "icon": "./logo.png",
+  "author": {
+    "name": "Blueskyfish",
+    "email": "blueskyfish@blueskyfish.de",
+    "url": "https://bluskyfish.de/",
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blueskyfish/whalerider.git"
+  },
+  "scripts": {},
+  "private": true,
+  "devDependencies": {
+    "@nrwl/angular": "^14.4.2",
+    "@nrwl/cli": "13.10.6",
+    "@nrwl/js": "13.10.6",
+    "@nrwl/node": "^14.4.2",
+    "@nrwl/workspace": "13.10.6",
+    "@types/node": "16.11.7",
+    "nx": "13.10.6",
+    "prettier": "^2.5.1",
+    "typescript": "~4.6.2"
+  }
+}
