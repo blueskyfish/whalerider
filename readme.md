@@ -1,5 +1,5 @@
 
-![Whalerider](logo.png)
+![Whalerider](logo.png) Whalerider
 
 # Whalerider
 
