@@ -1,4 +1,8 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "backend-lib-commons": "packages/backend/lib/commons",
+    "backend-lib-core": "packages/backend/lib/core",
+    "shared-lib-grundel": "packages/shared/lib/grundel"
+  }
 }

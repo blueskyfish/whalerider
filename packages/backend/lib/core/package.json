@@ -1,0 +1,13 @@
+{
+  "name": "@blueskyfish/backend-core",
+  "description": "Core Nestjs module for backend application",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "license": "MIT",
+  "peerDependencies": {
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/core": "^8.0.0",
+    "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/swagger": "^5.2.1"
+  }
+}

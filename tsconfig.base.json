@@ -14,7 +14,13 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@blueskyfish/backend-commons": [
+        "packages/backend/lib/commons/src/index.ts"
+      ],
+      "@blueskyfish/backend-core": ["packages/backend/lib/core/src/public-api"],
+      "@blueskyfish/grundel": ["packages/shared/lib/grundel/src/public-api"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
