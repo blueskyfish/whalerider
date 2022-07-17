@@ -8,18 +8,18 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2018",
     "module": "esnext",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@blueskyfish/backend-commons": [
-        "packages/backend/lib/commons/src/index.ts"
-      ],
-      "@blueskyfish/backend-core": ["packages/backend/lib/core/src/public-api"],
-      "@blueskyfish/grundel": ["packages/shared/lib/grundel/src/public-api"]
+      "@blueskyfish/backend-commons": ["packages/backend/lib/commons/src/public-api.ts"],
+      "@blueskyfish/backend-core": ["packages/backend/lib/core/src/public-api.ts"],
+      "@blueskyfish/backend-database": ["packages/backend/lib/database/src/public-api.ts"],
+      "@blueskyfish/backend-queue": ["packages/backend/lib/queue/src/public-api.ts"],
+      "@blueskyfish/grundel": ["packages/shared/lib/grundel/src/public-api.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
