@@ -3,6 +3,8 @@
   "projects": {
     "backend-lib-commons": "packages/backend/lib/commons",
     "backend-lib-core": "packages/backend/lib/core",
+    "backend-lib-database": "packages/backend/lib/database",
+    "backend-lib-queue": "packages/backend/lib/queue",
     "shared-lib-grundel": "packages/shared/lib/grundel"
   }
 }
