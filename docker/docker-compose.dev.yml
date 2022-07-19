@@ -1,0 +1,55 @@
+#
+# Docker Compose for local developing
+#
+# DON'T use this docker-compose on PRODUCTION
+#
+version: '3.8'
+
+services:
+  #
+  # Service "db" (MariaDB)
+  #
+  db:
+    image: mariadb:latest
+    container_name: blueskyfish_whalerider_database
+    restart: unless-stopped
+    ports:
+      - "52306:3306"
+    volumes:
+      - ./var/mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=blueskyfish1234
+    networks:
+      - blueskyfish-net
+
+  #
+  # Service PhpMyAdmin as "db-admin" for access to "db"
+  #
+  db-admin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: blueskyfish_whalerider_admin
+    restart: unless-stopped
+    ports:
+      - "52008:80"
+    links:
+      - db:db
+    networks:
+      - blueskyfish-net
+    depends_on:
+      - db
+
+  #
+  # service "Queue" (Redis)
+  queue:
+    image: redis:latest
+    container_name: blueskyfish_whalerider_queue
+    restart: unless-stopped
+    ports:
+      - "52379:6379"
+    networks:
+      - blueskyfish-net
+
+networks:
+  blueskyfish-net:
+    driver: bridge
+
