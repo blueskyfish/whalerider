@@ -13,7 +13,11 @@
     "type": "git",
     "url": "https://github.com/blueskyfish/whalerider.git"
   },
-  "scripts": {},
+  "scripts": {
+    "build:docker:dev": "docker compose -f docker/docker-compose.dev.yml -p whalerider build",
+    "start:docker:dev": "docker compose -f docker/docker-compose.dev.yml -p whalerider up -d",
+    "stop:docker:dev": "docker compose -f docker/docker-compose.dev.yml -p whalerider down"
+  },
   "private": true,
   "devDependencies": {
     "@nestjs/schematics": "9.0.1",
