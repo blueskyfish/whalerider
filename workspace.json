@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "backend-app-user": "packages/backend/app/user",
     "backend-lib-commons": "packages/backend/lib/commons",
     "backend-lib-core": "packages/backend/lib/core",
     "backend-lib-database": "packages/backend/lib/database",

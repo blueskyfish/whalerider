@@ -1,0 +1,6 @@
+{
+  "name": "@blueskyfish/backend-user",
+  "version": "0.0.1",
+  "description": "The backend manages the user",
+  "private": true
+}

@@ -1,0 +1,9 @@
+
+.run/
+.idea/
+docker/
+etc/
+packages/
+tmp/
+tools/
+node_modules/
