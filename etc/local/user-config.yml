@@ -1,7 +1,6 @@
 #
-# Example configuration for backend "user"
+# "Local running" configuration for backend "user"
 #
-# TODO Adjust the settings
 
 # Http Section
 http:
@@ -16,12 +15,12 @@ crypto:
 
 # Database Section
 db:
-  host: localhost
-  port: 28306
+  host: local-db
+  port: 3306
   user: '${APP_DB_USER}'
   database: '${APP_DB_DATABASE}'
   password: '${APP_DB_PASSWORD}'
-  debug: false
+  debug: true
   tables:
     users: '`users`'
     userSecrets: '`user_secrets`'
@@ -34,9 +33,9 @@ auth:
 
 # Queue Section
 queue:
-  host: localhost
+  host: 0.0.0.0
   port: 52379
 
 # System Section
-system:
-  about: var/backend/app-about.json
+# system:
+#   about: var/backend/app-about.json (use default!!)

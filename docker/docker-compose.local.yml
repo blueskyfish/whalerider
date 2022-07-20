@@ -1,0 +1,75 @@
+#
+# Docker Compose for local running
+#
+# IMPORTANT:
+#   DON'T use this docker-compose file on PRODUCTION
+#
+version: '3.8'
+
+services:
+  # TODO Add traefik
+
+
+  #
+  # Service "backend user"
+  #
+  local-user-api:
+    image: blueskyfish/backend-user-api:latest
+    container_name: blueskyfish_user_api
+    restart: unless-stopped
+    volumes:
+      - "../etc/local:/app/etc/config"
+    ports:
+      - "50050:5205"
+    networks:
+      - local_net
+    env_file:
+      - .local.env
+
+  #
+  # Service "db" (MariaDB)
+  #
+  local-db:
+    image: mariadb:latest
+    container_name: blueskyfish_local_database
+    restart: unless-stopped
+    ports:
+      - "50306:3306"
+    volumes:
+      - ../var/mariadb-local:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=blueskyfish1234
+    networks:
+      - local_net
+
+  #
+  # Service PhpMyAdmin as "db-admin" for access to "db"
+  #
+  local-db-admin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: blueskyfish_local_admin
+    restart: unless-stopped
+    ports:
+      - "50008:80"
+    links:
+      - local-db:db
+    networks:
+      - local_net
+    depends_on:
+      - local-db
+
+  #
+  # service "Queue" (Redis)
+  local-queue:
+    image: redis:latest
+    container_name: blueskyfish_local_queue
+    restart: unless-stopped
+    ports:
+      - "52379:6379"
+    networks:
+      - local_net
+
+networks:
+  local_net:
+    driver: bridge
+

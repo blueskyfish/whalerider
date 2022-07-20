@@ -59,7 +59,7 @@ function replaceConfig(config: ConfigObject): ConfigObject {
 
 function replaceEnv(value: string): string {
   return value.replace(/\${([a-zA-Z_]+)}/g, (text: string, key): string => {
-    Logger.debug(`Found environment variable "${key}"`)
+    Logger.debug(`Found environment variable "${key}" => "${process.env[key] ?? 'null'}"`)
     if (!isNil(process.env[key])) {
       return process.env[key] ?? text;
     }
