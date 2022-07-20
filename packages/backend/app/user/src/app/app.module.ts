@@ -2,6 +2,7 @@ import { BackendCommonsModule, HttpExceptionFilter } from '@blueskyfish/backend-
 import { BackendCoreModule, configLoader } from '@blueskyfish/backend-core';
 import { BackendDatabaseModule } from '@blueskyfish/backend-database';
 import { BackendQueueModule } from '@blueskyfish/backend-queue';
+import { BackendSystemModule } from '@blueskyfish/backend-system';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER } from '@nestjs/core';
@@ -18,6 +19,8 @@ import { APP_FILTER } from '@nestjs/core';
     BackendCommonsModule,
     BackendDatabaseModule,
     BackendQueueModule.registerAsPublisher(),
+
+    BackendSystemModule,
   ],
   controllers: [],
   providers: [

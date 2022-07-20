@@ -1,6 +1,7 @@
 {
   "name": "@blueskyfish/whalerider",
   "description": "A start template for angular and nestjs mono repository",
+  "title": "Blueskyfish Whalerider",
   "version": "0.0.1",
   "license": "MIT",
   "icon": "./logo.png",

@@ -8,9 +8,28 @@
       "options": {
         "commands": [
           "nx run backend-app-user:build:production",
+          "nx run backend-app-user:about:production",
           "docker build -f ./packages/backend/app/user/Dockerfile ./dist -t blueskyfish/backend-user-api"
         ],
         "parallel": false
+      }
+    },
+    "about": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+         "parallel": false
+      },
+      "configurations": {
+        "develop": {
+          "commands": [
+            "ts-node -P ./tools/deployment/tsconfig.json --cwd . tools/deployment/generate-about.ts --stage=dev --debug=true --output=./var/backend/app-about.json"
+          ]
+        },
+        "production": {
+          "commands": [
+            "ts-node -P ./tools/deployment/tsconfig.json --cwd . tools/deployment/generate-about.ts --stage=prod --debug=true --output=./dist/packages/backend/app/user/assets/app-about.json"
+          ]
+        }
       }
     },
     "build": {

@@ -76,6 +76,7 @@ export async function generateAbout(options: GenerateInfoOptions): Promise<void>
       await asyncMkDir(dirName, {recursive: true});
     }
 
+    console.info('> Save AppAbout %s', options.outputPath);
     await asyncWriteFile(options.outputPath, JSON.stringify(appAbout, null, 2), {encoding: 'utf8'});
 
     if (options.debug) {

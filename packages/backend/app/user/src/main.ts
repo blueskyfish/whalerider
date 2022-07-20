@@ -7,15 +7,22 @@ import { Logger } from '@nestjs/common';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
+const NAME = 'Blueskyfish Backend User';
+const DESCRIPTION = `
+The OpenApi Overview of **Blueskyfish Backend User**
+
+Blueskyfish Repository <https://github.com/blueskyfish/whalerider.git>
+`
+
 const options: BootstrapOptions = {
-  appName: 'Blueskyfish AppStarter',
+  appName: NAME,
   appModule: AppModule,
   httpHost: 'localhost',
   httpPort: 52050,
   production: environment.production,
   openApi: {
-    title: 'Blueskyfish User',
-    description: 'The OpenApi Overview of "Blueskyfish User"',
+    title: NAME,
+    description: DESCRIPTION,
     version: "0.0.1"
   }
 };

@@ -3,6 +3,8 @@
 #
 # <https://blog.nrwl.io/nx-and-node-microservices-b6df3cd1bad6>
 #
+# IMPORTANT: Context Path is "./dist"
+#
 FROM node:16-alpine
 
 WORKDIR /app
@@ -25,6 +27,11 @@ RUN npm install --omit=dev
 #
 ENV CONFIG_PATH=/app/etc/config/user-config.yml
 
+#
+# File is overrideable
+#
 VOLUME ["/app/etc/config"]
+
+EXPOSE 52050
 
 CMD node ./main.js

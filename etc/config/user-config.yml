@@ -1,0 +1,42 @@
+#
+# Example configuration for backend "user"
+#
+# TODO Adjust the settings
+
+# Http Section
+http:
+  host: 0.0.0.0
+  port: 52050
+
+# Crypto Section
+crypto:
+  publicKey: '${APP_CRYPTO_PUBLIC_KEY}'
+  privateKey: '${APP_CRYPTO_PRIVATE_KEY}'
+  digestSecret: '${APP_CRYPTO_DIGEST_SECRET}'
+
+# Database Section
+db:
+  host: localhost
+  port: 28306
+  user: '${APP_DB_USER}'
+  database: '${APP_DB_DATABASE}'
+  password: '${APP_DB_PASSWORD}'
+  debug: false
+  tables:
+    users: '`users`'
+    userSecrets: '`user_secrets`'
+    userPermissions: '`user_permissions`'
+
+# Auth Section
+auth:
+  # Renewal the auth token (0 no check ; > 0 the hours)
+  timeout: 0
+
+# Queue Section
+queue:
+  host: localhost
+  port: 28379
+
+# System Section
+system:
+  about: var/backend/app-about.json
