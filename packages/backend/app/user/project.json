@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/backend/app/user/src",
+  "projectType": "application",
+  "targets": {
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "nx run backend-app-user:build:production",
+          "nx run backend-app-user:about:production",
+          "docker build -f ./packages/backend/app/user/Dockerfile ./dist -t blueskyfish/backend-user-api"
+        ],
+        "parallel": false
+      }
+    },
+    "about": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+         "parallel": false
+      },
+      "configurations": {
+        "develop": {
+          "commands": [
+            "ts-node -P ./tools/deployment/tsconfig.json --cwd . tools/deployment/generate-about.ts --stage=dev --debug=true --output=./var/backend/app-about.json"
+          ]
+        },
+        "production": {
+          "commands": [
+            "ts-node -P ./tools/deployment/tsconfig.json --cwd . tools/deployment/generate-about.ts --stage=prod --debug=true --output=./dist/packages/backend/app/user/assets/app-about.json"
+          ]
+        }
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/backend/app/user",
+        "main": "packages/backend/app/user/src/main.ts",
+        "tsConfig": "packages/backend/app/user/tsconfig.app.json",
+        "assets": ["packages/backend/app/user/src/assets"],
+        "generatePackageJson": true
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": false,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "packages/backend/app/user/src/environments/environment.ts",
+              "with": "packages/backend/app/user/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "backend-app-user:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "backend-app-user:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/backend/app/user/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/backend/app/user"],
+      "options": {
+        "jestConfig": "packages/backend/app/user/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["backend:app", "type:app"]
+}

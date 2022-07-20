@@ -1,7 +1,15 @@
 #
 # Docker Compose for local developing
 #
-# DON'T use this docker-compose on PRODUCTION
+# Purpose:
+#   During the local developing, the backends needs the "db", "db-admin" and "queue" services
+#
+#   - "db"        the mariadb database server
+#   - "db-admin"  the phpMyAdmin frontend for the mariadb server
+#   - "queue"     The redis server for communication between the backend applications
+#
+# IMPORTANT:
+#   DON'T use this docker-compose file on PRODUCTION
 #
 version: '3.8'
 
@@ -16,11 +24,11 @@ services:
     ports:
       - "52306:3306"
     volumes:
-      - ./var/mariadb:/var/lib/mysql
+      - ../var/mariadb-dev:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=blueskyfish1234
     networks:
-      - blueskyfish-net
+      - develop_net
 
   #
   # Service PhpMyAdmin as "db-admin" for access to "db"
@@ -34,7 +42,7 @@ services:
     links:
       - db:db
     networks:
-      - blueskyfish-net
+      - develop_net
     depends_on:
       - db
 
@@ -47,9 +55,9 @@ services:
     ports:
       - "52379:6379"
     networks:
-      - blueskyfish-net
+      - develop_net
 
 networks:
-  blueskyfish-net:
+  develop_net:
     driver: bridge
 

@@ -15,11 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@blueskyfish/backend-commons": ["packages/backend/lib/commons/src/public-api.ts"],
-      "@blueskyfish/backend-core": ["packages/backend/lib/core/src/public-api.ts"],
-      "@blueskyfish/backend-database": ["packages/backend/lib/database/src/public-api.ts"],
-      "@blueskyfish/backend-queue": ["packages/backend/lib/queue/src/public-api.ts"],
-      "@blueskyfish/grundel": ["packages/shared/lib/grundel/src/public-api.ts"]
+      "@blueskyfish/backend-commons": ["packages/backend/lib/commons/src"],
+      "@blueskyfish/backend-core": ["packages/backend/lib/core/src"],
+      "@blueskyfish/backend-database": ["packages/backend/lib/database/src"],
+      "@blueskyfish/backend-queue": ["packages/backend/lib/queue/src"],
+      "@blueskyfish/backend-system": ["packages/backend/lib/system/src"],
+      "@blueskyfish/grundel": ["packages/shared/lib/grundel/src"]
     }
   },
   "exclude": ["node_modules", "tmp"]
