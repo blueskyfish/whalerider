@@ -16,7 +16,7 @@ services:
     ports:
       - "52306:3306"
     volumes:
-      - ./var/mariadb:/var/lib/mysql
+      - ../var/mariadb:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=blueskyfish1234
     networks:
