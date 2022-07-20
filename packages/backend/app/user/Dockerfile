@@ -7,6 +7,8 @@
 #
 FROM node:16-alpine
 
+USER node
+
 WORKDIR /app
 
 COPY ./packages/backend/app/user .
@@ -26,6 +28,7 @@ RUN npm install --omit=dev
 # Required: The path (and filename) to the configuration
 #
 ENV CONFIG_PATH=/app/etc/config/user-config.yml
+ENV NODE_ENV=production
 
 #
 # File is overrideable
