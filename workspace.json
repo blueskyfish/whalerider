@@ -6,6 +6,7 @@
     "backend-lib-core": "packages/backend/lib/core",
     "backend-lib-database": "packages/backend/lib/database",
     "backend-lib-queue": "packages/backend/lib/queue",
+    "backend-lib-system": "packages/backend/lib/system",
     "shared-lib-grundel": "packages/shared/lib/grundel"
   }
 }
